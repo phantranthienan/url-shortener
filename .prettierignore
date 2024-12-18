@@ -1,0 +1,19 @@
+# Ignore artifacts:
+build
+coverage
+node_modules
+.next
+out
+
+# Ignore all HTML files:
+*.html
+
+# Ignore all minified files:
+*.min.js
+*.min.css
+
+# Ignore all files in the public directory:
+public
+
+# Ignore specific files:
+package-lock.json
