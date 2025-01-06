@@ -10,21 +10,28 @@
         "eslint:format": "eslint src --fix .",
         "prettier:format": "prettier --write .",
         "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
-        "migrate": "npx prisma migrate dev",
-        "studio": "npx prisma studio",
-        "generate": "npx prisma generate"
+        "migrate": "npx prisma migrate dev --name",
+        "push": "npx prisma db push",
+        "prisma:validate": "npx prisma validate",
+        "add": "npx shadcn@latest add"
     },
     "dependencies": {
         "@prisma/client": "^6.1.0",
+        "@radix-ui/react-popover": "^1.1.4",
         "@radix-ui/react-slot": "^1.1.1",
+        "@tanstack/react-query": "^5.62.15",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "date-fns": "^4.1.0",
         "lucide-react": "^0.468.0",
+        "nanoid": "^5.0.9",
         "next": "15.1.0",
         "react": "^19.0.0",
+        "react-day-picker": "^8.10.1",
         "react-dom": "^19.0.0",
         "tailwind-merge": "^2.5.5",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "zod": "^3.24.1"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
