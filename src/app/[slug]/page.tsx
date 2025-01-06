@@ -10,7 +10,7 @@ interface RedirectPageProps {
 }
 
 const RedirectPage: React.FC<RedirectPageProps> = async ({ params }) => {
-    const { slug } = params;
+    const { slug } = await params;
 
     const url: Url | null = await prisma.url.findUnique({
         where: {
@@ -21,6 +21,17 @@ const RedirectPage: React.FC<RedirectPageProps> = async ({ params }) => {
     if (!url) {
         return notFound();
     }
+
+    await prisma.url.update({
+        where: {
+            id: url.id,
+        },
+        data: {
+            visits: {
+                increment: 1,
+            },
+        },
+    });
 
     redirect(url.originUrl);
 };

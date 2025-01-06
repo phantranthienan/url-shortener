@@ -1,11 +1,15 @@
+'use client';
+
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { CopyIcon, EyeIcon } from 'lucide-react';
+import { CopyIcon, EyeIcon, CheckIcon } from 'lucide-react';
 import { useGetUrlsQuery } from '@/lib/hooks/useUrls';
 
 const UrlList = () => {
     const { data: urls, isLoading, isError } = useGetUrlsQuery();
+    const [copied, setCopied] = useState<boolean>(false);
+    const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
 
     if (isLoading) {
         return <p>Loading...</p>;
@@ -16,6 +20,17 @@ const UrlList = () => {
 
     const shortenUrl = (slug: string) => {
         return `${process.env.NEXT_PUBLIC_BASE_URL}/${slug}`;
+    };
+
+    const handleCopyUrl = (slug: string) => {
+        navigator.clipboard.writeText(shortenUrl(slug)).then(() => {
+            setCopied(true);
+            setCopiedUrl(slug);
+            setTimeout(() => {
+                setCopied(false);
+                setCopiedUrl(null);
+            }, 1000);
+        });
     };
 
     return (
@@ -39,8 +54,13 @@ const UrlList = () => {
                                 variant="ghost"
                                 size="icon"
                                 className="text-muted-foreground hover:bg-muted"
+                                onClick={() => handleCopyUrl(url.slug)}
                             >
-                                <CopyIcon size={16} />
+                                {copied && copiedUrl === url.slug ? (
+                                    <CheckIcon size={16} />
+                                ) : (
+                                    <CopyIcon size={16} />
+                                )}
                                 <span className="sr-only">Copy URL</span>
                             </Button>
                             <span className="flex items-center">
