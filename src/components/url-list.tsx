@@ -12,8 +12,9 @@ const UrlList = () => {
     const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <p>Loading URLs...</p>;
     }
+
     if (isError) {
         return <p>Error loading URLs</p>;
     }
@@ -35,12 +36,12 @@ const UrlList = () => {
 
     return (
         <div>
-            <h2 className="text-center text-2xl font-bold">Recent URLs</h2>
+            <h2 className="mb-2 text-2xl font-bold">Recent URLs</h2>
             <ul className="space-y-2">
                 {urls?.map((url) => (
                     <li
                         key={url.id}
-                        className="flex items-center justify-between"
+                        className="flex items-center justify-between rounded-md border bg-card px-3 py-2 text-card-foreground"
                     >
                         <Link
                             href={`/${url.slug}`}
@@ -63,9 +64,9 @@ const UrlList = () => {
                                 )}
                                 <span className="sr-only">Copy URL</span>
                             </Button>
-                            <span className="flex items-center">
+                            <span className="flex items-center gap-2">
                                 <EyeIcon size={16} />
-                                {url.visits} views
+                                <p>{url.visits} views</p>
                             </span>
                         </div>
                     </li>

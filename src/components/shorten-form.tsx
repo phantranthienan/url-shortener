@@ -145,7 +145,9 @@ const ShortenForm = () => {
             </div>
 
             <Button className="w-full" type="submit">
-                Shorten URL
+                {shortenUrlMutation.status === 'pending'
+                    ? 'Shortening...'
+                    : 'Shorten URL'}
             </Button>
         </form>
     );
