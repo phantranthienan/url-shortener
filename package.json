@@ -4,16 +4,17 @@
     "private": true,
     "scripts": {
         "dev": "next dev --turbopack",
-        "build": "next build",
+        "build": "npx prisma generate && next build",
         "start": "next start",
         "lint": "next lint",
         "eslint:format": "eslint src --fix .",
         "prettier:format": "prettier --write .",
         "prettier:check": "prettier --check \"**/*.{ts,tsx,json}\"",
-        "migrate": "npx prisma migrate dev --name",
-        "push": "npx prisma db push",
+        "prisma:migrate": "npx prisma migrate dev --name",
+        "prisma:push": "npx prisma db push",
+        "prisma:generate": "npx prisma generate",
         "prisma:validate": "npx prisma validate",
-        "add": "npx shadcn@latest add"
+        "shadcn:add": "npx shadcn@latest add"
     },
     "dependencies": {
         "@prisma/client": "^6.1.0",
