@@ -6,6 +6,7 @@
         "dev": "next dev --turbopack",
         "build": "npx prisma generate && next build",
         "start": "next start",
+        "postinstall": "npx prisma migrate deploy",
         "lint": "next lint",
         "eslint:format": "eslint src --fix .",
         "prettier:format": "prettier --write .",
