@@ -4,9 +4,9 @@ import prisma from '@/lib/db';
 import { notFound, redirect } from 'next/navigation';
 
 interface RedirectPageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 const RedirectPage: React.FC<RedirectPageProps> = async ({ params }) => {
