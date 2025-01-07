@@ -3,7 +3,7 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <main className="mb-auto mt-20 w-full">
+        <main className="mb-auto mt-12 w-full">
             <UrlShortenerContainer />
         </main>
     );

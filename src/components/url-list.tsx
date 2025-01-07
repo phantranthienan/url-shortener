@@ -41,7 +41,7 @@ const UrlList = () => {
                 {urls?.map((url) => (
                     <li
                         key={url.id}
-                        className="flex items-center justify-between rounded-md border bg-card px-3 py-2 text-card-foreground"
+                        className="flex items-center justify-between"
                     >
                         <Link
                             href={`/${url.slug}`}
